@@ -38,6 +38,17 @@ Otherwise, you should make your environment by yourself.
 ```
 conda create --name JC82env
 ```
+Then activate your environment.
+```
+conda activate JC82env
+```
+In your environment, install your programs of interest such as python, cutadapter and etc.
+If you want to make your own env.yml to share others, type the code below in the activated env.
+
+```
+conda env export > /home/JC/JC82env.yml
+```
+
 
 
 
