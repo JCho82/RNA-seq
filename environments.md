@@ -48,6 +48,15 @@ If you want to make your own env.yml to share others, type the code below in the
 ```
 conda env export > /home/JC/JC82env.yml
 ```
+To list what envs are present in your server,
+```
+conda env list
+```
+To see what programs have been installed in your env,
+```
+conda list
+```
+
 ### Something useful to work in command line.
 
 If your files are too big but in your server, please use "link" command. To unlink, type unlink with targets.
