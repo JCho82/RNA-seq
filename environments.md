@@ -48,6 +48,27 @@ If you want to make your own env.yml to share others, type the code below in the
 ```
 conda env export > /home/JC/JC82env.yml
 ```
+If your files are too big but in your server, please use "link" command. To unlink, type unlink with targets.
+./ indicates your current position.
+```
+ln -s /dartfs-hpc/rc/lab/G/GSR_Active/Labs/Cheung/RNA-seq_3-7-22/*fastq.gz ./
+```
+To unlink,
+```
+unlink *fastq.gz
+```
+
+if you feel sick of typing same things again and again, use alias and add it to .bashrc.
+```
+alias myfolder='cd /dartfs-hpc/qqqbbsdsdf/JC/'
+```
+
+If you add the code above in .bashrc, when you type myfolder, it is the same as 'cd /dartfs-hpc/qqqbbsdsdf/JC/'
+keep in mind that you should reload .bashrc if you change or upload the file.
+```bash
+source ~/.bashrc
+```
+
 
 
 
