@@ -19,4 +19,25 @@ nano .bashrc
 ```
 In the editor, add the code for source in .bashrc file.
 
+Then, you need to make folders to store your own conda environments
+
+```
+cd ~
+mkdir -p .conda/pkgs/cache .conda/envs
+```
+-p represents -path or -parents.
+
+If you have an environment file with yml, you can directly install your environment.
+
+```
+conda env create -f /dartfs-hpc/scratch/rnaseq1/environment.yml
+```
+
+Otherwise, you should make your environment by yourself.
+
+```
+conda create --name JC82env
+```
+
+
 
