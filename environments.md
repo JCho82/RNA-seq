@@ -63,7 +63,7 @@ if you feel sick of typing same things again and again, use alias and add it to 
 alias myfolder='cd /dartfs-hpc/qqqbbsdsdf/JC/'
 ```
 
-If you add the code above in .bashrc, when you type myfolder, it is the same as 'cd /dartfs-hpc/qqqbbsdsdf/JC/'
+If you add the code above in .bashrc, when you type myfolder, it performs 'cd /dartfs-hpc/qqqbbsdsdf/JC/'
 keep in mind that you should reload .bashrc if you change or upload the file.
 ```bash
 source ~/.bashrc
