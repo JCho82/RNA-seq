@@ -11,4 +11,12 @@ You may have to write code like this or your server administrator may set up a p
 source /optnfs/common/miniconda3/etc/profile.d/conda.sh
 ```
 
+In order not to run this command each time you start a new session on discovery, it would be better to set it in a path.
+
+nano is an editor to modify a file.
+```
+nano .bashrc
+```
+In the editor, add the code for source in .bashrc file.
+
 
