@@ -38,5 +38,62 @@ echo $i is completed for trimming.
 done
 ```
 
+### Align with STAR
 
+First, you need to make a reference with STAR.
+To do this, a complete reference file with fasta and gtf information.
+You can get them from NCBI website (https://www.ncbi.nlm.nih.gov/refseq/)
+
+```
+STAR --runThreadN 4 \
+  --runMode genomeGenerate \
+  --genomeDir /dartfs-hpc/rc/home/d/f0033vd/Star_index_USA300_FPR3757 \
+  --genomeFastaFiles /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic.fna \
+  --sjdbGTFfile /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf \
+  --genomeSAindexNbases 8
+```
+
+Once you make the reference, it is time to align your reads.
+```
+STAR --genomeDir /dartfs-hpc/rc/home/d/f0033vd/Star_index_USA300_FPR3757 \
+  --readFilesIn /dartfs-hpc/scratch/cheung/JC/results/cutadapt/S1_R1.trim.fastq.gz /dartfs-hpc/scratch/cheung/JC/results/cutadapt/S1_R2.trim.fastq.gz \
+  --readFilesCommand zcat \
+  --sjdbGTFfile /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf \
+  --runThreadN 4 \
+  --alignIntronMax 1 \
+  --outBAMsortingBinsN 200 \
+  --limitBAMsortRAM 2000000000 \
+  --outSAMtype BAM SortedByCoordinate \
+  --outFilterType BySJout \
+  --outFileNamePrefix S1.
+```
+
+Bash file
+```
+#!/bin/bash
+#SBATCH --job-name=multicore_job
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --time=1:50:00
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+for i in {13..24}; do \
+
+STAR --genomeDir /dartfs-hpc/rc/home/d/f0033vd/Star_index_USA300_FPR3757 \
+  --readFilesIn /dartfs-hpc/scratch/cheung/JC/results/trim/S${i}_R1.trim.fastq.gz /dartfs-hpc/scratch/cheung/JC/results/trim/S${i}_R2.trim.fastq.gz \
+  --readFilesCommand zcat \
+  --sjdbGTFfile /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf \
+  --runThreadN 4 \
+  --alignIntronMax 1 \
+  --outBAMsortingBinsN 200 \
+  --limitBAMsortRAM 2000000000 \
+  --outSAMtype BAM SortedByCoordinate \
+  --outFilterType BySJout \
+  --outFileNamePrefix S${i}. \
+
+echo sample$i is completed for alignment
+
+done
+
+```
 
