@@ -97,3 +97,21 @@ done
 
 ```
 
+### Count the features of interest with FeatureCounts
+
+
+
+```
+#!/bin/bash
+#SBATCH --job-name=multicore_job
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --time=00:50:00
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+featureCounts -T 4 -p -t CDS -a /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf -o /dartfs-hpc/scratch/cheung/JC/results/counts_USA300/totalcounts_AM.txt /dartfs-hpc/scratch/cheung/JC/results/alignment_USA300_FPR3757_AM/*.Aligned.sortedByCoord.out.bam
+```
+
+
+
+
