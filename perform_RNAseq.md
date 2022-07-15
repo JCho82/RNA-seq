@@ -49,7 +49,7 @@ The output files will be S1_R1.trim.fastq.gz, S1_R2.trim.fastq.gz, and etc.
 
 First, you need to make a reference with STAR.
 
-To do this, a complete reference file with fasta and gtf information.
+To do this, find a complete reference file with fasta and gtf information.
 
 You can get them from NCBI website (https://www.ncbi.nlm.nih.gov/refseq/)
 
