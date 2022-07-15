@@ -142,7 +142,7 @@ If you have multiple IDs with identical name in the file, you will see a wired r
 #SBATCH --time=00:50:00
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-featureCounts -T 4 -p -t CDS -a /USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf -o /results/counts_USA300/totalcounts.txt /results/*.Aligned.sortedByCoord.out.bam
+featureCounts -T 4 -p -t CDS -a /USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf -o /results/totalcounts.txt /results/*.Aligned.sortedByCoord.out.bam
 ```
 -T (capitalized) indicates the number of CPU threads.
 
