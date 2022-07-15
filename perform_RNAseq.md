@@ -41,7 +41,7 @@ echo $i is completed for trimming.
 
 done
 ```
-The example above is showing a run with 10 samples named JC01_S1_R1.fastq.gz and JC01_S1_R2.fastq.gz with increment numbers in the sample. 
+The example above is showing a run with 10 samples named JC01_S1_R1.fastq.gz and JC01_S1_R2.fastq.gz with increment numbers. 
 
 The output files will be S1_R1.trim.fastq.gz, S1_R2.trim.fastq.gz, and etc.
 
