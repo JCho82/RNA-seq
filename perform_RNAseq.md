@@ -150,9 +150,9 @@ featureCounts -T 4 -p -t CDS -a /USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomi
 
 -t is to specify the feature type (GTF.featureType)
 
--g is to Specify the attribute type used to group features (eg. exons) into meta-features (eg. genes) when GTF annotation is provided. ‘gene id’ by default.
+-g is to specify the attribute type used to group features (eg. exons) into meta-features (eg. genes) when GTF annotation is provided. ‘gene id’ by default.
 
-Since -g is not correctly working, you need to change (-t) option if need to change the feature type.
+*Since -g is not correctly working, you need to change (-t) option if need to change the feature type.
 
 
 
