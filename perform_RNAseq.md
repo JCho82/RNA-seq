@@ -90,8 +90,15 @@ STAR --genomeDir /reference/Star_index_USA300_FPR3757 \
   --outFilterType BySJout \
   --outFileNamePrefix S1.
 ```
+Since I am working on bacteria, I set alignIntronMaz to 1 (bacteria don't have introns).
 
-Bash file
+For limitBAMsortRAM, I set it to 2000000000 since this amount of memory was allowed me to use.
+
+The option "outBAMsortingBinsN" indicates the number of genome bins fo coordinate-sorting.
+To reduce the memory stress in the shared computer, I set it to 200 (the default is 50).
+
+
+For Bash file
 ```
 #!/bin/bash
 #SBATCH --job-name=multicore_job
@@ -100,12 +107,12 @@ Bash file
 #SBATCH --time=1:50:00
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-for i in {13..24}; do \
+for i in {1..10}; do \
 
-STAR --genomeDir /dartfs-hpc/rc/home/d/f0033vd/Star_index_USA300_FPR3757 \
-  --readFilesIn /dartfs-hpc/scratch/cheung/JC/results/trim/S${i}_R1.trim.fastq.gz /dartfs-hpc/scratch/cheung/JC/results/trim/S${i}_R2.trim.fastq.gz \
+STAR --genomeDir /reference/Star_index_USA300_FPR3757 \
+  --readFilesIn /results/trim/S${i}_R1.trim.fastq.gz /results/trim/S${i}_R2.trim.fastq.gz \
   --readFilesCommand zcat \
-  --sjdbGTFfile /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf \
+  --sjdbGTFfile /USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf \
   --runThreadN 4 \
   --alignIntronMax 1 \
   --outBAMsortingBinsN 200 \
@@ -135,8 +142,19 @@ If you have multiple IDs with identical name in the file, you will see a wired r
 #SBATCH --time=00:50:00
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-featureCounts -T 4 -p -t CDS -a /dartfs-hpc/rc/home/d/f0033vd/USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf -o /dartfs-hpc/scratch/cheung/JC/results/counts_USA300/totalcounts_AM.txt /dartfs-hpc/scratch/cheung/JC/results/alignment_USA300_FPR3757_AM/*.Aligned.sortedByCoord.out.bam
+featureCounts -T 4 -p -t CDS -a /USA300_FPR3757/GCF_000013465.1_ASM1346v1_genomic_with_sRNA.gtf -o /results/counts_USA300/totalcounts.txt /results/*.Aligned.sortedByCoord.out.bam
 ```
+-T (capitalized) indicates the number of CPU threads.
+
+-p is used for paired-end reads. 
+
+-t is to specify the feature type (GTF.featureType)
+
+-g is to Specify the attribute type used to group features (eg. exons) into meta-features (eg. genes) when GTF annotation is provided. ‘gene id’ by default.
+
+Since -g is not correctly working, you need to change (-t) option if need to change the feature type.
+
+
 
 
 
