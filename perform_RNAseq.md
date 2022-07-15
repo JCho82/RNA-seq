@@ -130,7 +130,7 @@ done
 ### Count reads in features with FeatureCounts
 
 You should carefully check if duplicates or triplicates of ID in gtf file are present.
-If you have multiple IDs with identical name in the file, you will see a wired result with uncounted features.
+If you have multiple IDs with the identical name in the file, you will see a wired result with uncounted features.
 
 
 
