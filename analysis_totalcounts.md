@@ -188,16 +188,14 @@ write.csv(out1, file="final.csv")
 Save the results into csv.file.
 After making this file, it would be better to save it as xlsx file in excel which is quite compatible to any other softwares.
 
-  
-  
-  
+This final data would look like below;
+    
+![1234](https://user-images.githubusercontent.com/105310312/210437203-41db0b5a-5a1e-4b38-b346-c4a521d4a33b.png)
 
+
+
+        
+ logFC = log2 value (that is log fold change)
+ LogCPM are the log counts per million, which can be understood as measuring expression level.
  
-  
-  
-
-  
-  
-
-
-
+ 
