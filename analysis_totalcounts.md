@@ -1,4 +1,5 @@
 # Create a file to analyse your data in R workspace
+### This work is refered to the standford RNA seq analysis website. (https://web.stanford.edu/class/bios221/labs/rnaseq/lab_4_rnaseq.html)
 In order to make a Rdata file, you need to download and install R (https://www.r-project.org/) and Rstudio (https://posit.co/download/rstudio-desktop/).
 Once you install them, start with R.
 
@@ -111,11 +112,12 @@ head(cpm(d))
 ```
 apply(d$counts, 2, sum)
 ```
-  
+This shows the sum of the counts for each sample.
 ```
 keep <- rowSums(cpm(d)>100) >= 2
 ```
-  
+We must have at least 100 counts per million (calculated with cpm() in R) on any particular gene that we want to keep. In this example, we're only keeping a gene if it has a cpm of 100 or greater for at least two samples.
+ 
 ```
 d <- d[keep,]
 ```
