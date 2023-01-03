@@ -195,9 +195,9 @@ This final data would look like below;
 
 
         
- logFC = log2 value (that is log fold change)
+logFC = log2 value (that is log fold change)
         
         
-        LogCPM are the log counts per million, which can be understood as measuring expression level.
+logCPM are the log counts per million, which can be understood as measuring expression level.
  
  
